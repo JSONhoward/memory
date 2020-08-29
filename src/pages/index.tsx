@@ -88,7 +88,7 @@ const Index = () => {
     }
 
     const handleDifficulty = (num: string) => {
-        if(!gameActive) setDifficulty(num)
+        if(!gameActive && !won) setDifficulty(num)
     }
 
     const handleNewGame = () => {

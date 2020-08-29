@@ -25,14 +25,18 @@ const MainGrid: React.FC<Props> = ({ handle, match, pairNum, grid, show, time, w
         )
     })
 
+    let elapsed = time.end - time.start
+    let seconds =  (elapsed / 1000).toPrecision(2)
+    let minutes =  Math.floor(Number(seconds) / 60).toString()
+
     return (
         <>
             <StyledMainGrid size={grid.length}>
                 {boxes}
             </StyledMainGrid>
-            {!won && (<GameStats gameOver={false}>
+            {won && (<GameStats gameOver={false}>
                 <p>Game Over</p>
-                <p>time: {((time.end - time.start) / 1000).toFixed(1)}s</p>
+                <p>time: {minutes.length === 1 ? '0' + minutes : minutes}:{seconds.length === 3 ? '0' + seconds : seconds}</p>
             </GameStats>)}
         </>
     )
