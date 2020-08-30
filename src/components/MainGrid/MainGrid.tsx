@@ -1,8 +1,8 @@
 import React from 'react'
 
-import GridBoxImage from './GridBoxImage/GridBoxImage'
+import GridBoxImage from './GridBoxImage'
 import { genBoxesArray } from './MainGrid.utils';
-import GridBox from './GridBox/GridBox';
+import GridBox from './GridBox';
 import { GridObject, InitialTiles } from '../../@types/myTypes';
 import { GameStats, StyledMainGrid } from './MainGrid.styles';
 
@@ -25,9 +25,9 @@ const MainGrid: React.FC<Props> = ({ handle, match, pairNum, grid, show, time, w
         )
     })
 
-    let elapsed = time.end - time.start
-    let seconds =  (elapsed / 1000).toPrecision(2)
-    let minutes =  Math.floor(Number(seconds) / 60).toString()
+    let elapsed = time.end - time.start,
+    seconds =  (elapsed / 1000).toPrecision(2),
+    minutes =  Math.floor(Number(seconds) / 60).toString()
 
     return (
         <>

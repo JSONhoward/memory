@@ -1,5 +1,5 @@
-import {atom} from 'recoil'
-import { gridMedium, initialTiles, gridSmall, gridLarge } from './store.utils';
+import {atom, selector} from 'recoil'
+import { gridMedium, initialTiles, gridSmall, gridLarge, shuffleImages } from './store.utils';
 
 export const GridSize = atom({
     key: 'gridSize',
@@ -7,6 +7,18 @@ export const GridSize = atom({
         sm: gridSmall,
         md: gridMedium,
         lg: gridLarge
+    }
+})
+
+export const ShuffledGrid = selector({
+    key: 'shuffledGrid',
+    get: ({get}) => {
+        let {sm, md, lg} = get(GridSize),
+        small = shuffleImages(sm),
+        medium = shuffleImages(md),
+        large = shuffleImages(lg)
+
+        return {sm: small, md: medium, lg: large}
     }
 })
 

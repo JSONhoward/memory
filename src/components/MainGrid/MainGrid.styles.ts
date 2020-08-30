@@ -1,6 +1,7 @@
+import * as React from 'react';
 import styled from 'styled-components';
 
-export const StyledMainGrid = styled('div') <{ size: number }>`
+export const StyledMainGrid = React.memo(styled('div') <{ size: number }>`
 display: grid;
 grid-template-columns: ${props => {
         switch (props.size) {
@@ -35,11 +36,11 @@ margin-top: 1rem;
 height: calc(.8 * 95vw);
 width: 95vw;
 }
-`
+`)
 
 export const GameStats = styled('div') <{ gameOver: boolean }>`
 position: absolute;
-top: 10rem;
+top: 15rem;
 left: 50%;
 transform: translateX(-50%);
 display: flex;

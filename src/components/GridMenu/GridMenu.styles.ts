@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled from 'styled-components'
 
 export const StyledGridMenu = styled('div')`
@@ -24,7 +25,7 @@ border-radius: 10px;
 }
 `
 
-export const DifficultyNumbers = styled('button')<{disable: boolean}>`
+export const DifficultyNumbers = React.memo(styled('button')<{disable: boolean}>`
 display: grid;
 place-items: center;
 height: 100%;
@@ -45,9 +46,9 @@ cursor: pointer;
 @media screen and (max-width: 400px) {
     font-size: 3vw;
 }
-`
+`)
 
-export const NewGameBox = styled('button')`
+export const NewGameBox = React.memo(styled('button')`
 display: grid;
 place-items: center;
 flex: 1;
@@ -64,4 +65,4 @@ cursor: pointer;
 @media screen and (max-width: 400px) {
     font-size: 5vw;
 }
-`
+`)

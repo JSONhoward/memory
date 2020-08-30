@@ -1,17 +1,18 @@
 import React, { MouseEvent, useState, useEffect } from 'react'
+import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 
-import MainGrid from '../components/MainGrid/MainGrid';
-import Layout from '../components/Layout/Layout'
-import GridMenu from '../components/GridMenu/GridMenu';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { Difficulty, MatchTile, ShowTile, GridSize } from '../store/store';
+import MainGrid from '../components/MainGrid';
+import Layout from '../components/Layout'
+import GridMenu from '../components/GridMenu';
+import { Difficulty, MatchTile, ShowTile, GridSize, ShuffledGrid } from '../store/store';
 import { InitialTiles, SelectionArray, GridSizeType } from '../@types/myTypes';
 import { sleep } from '../components/MainGrid/MainGrid.utils';
 import { shuffleImages } from '../store/store.utils';
 
 const Index = () => {
-    const [difficulty, setDifficulty] = useRecoilState(Difficulty)
-    const [gridTiles, setGridTiles] = useRecoilState<GridSizeType>(GridSize)
+    const [difficulty, setDifficulty] = useRecoilState<string>(Difficulty)
+    const setGridTiles = useSetRecoilState(GridSize)
+    const gridTiles = useRecoilValue<GridSizeType>(ShuffledGrid)
     const [selectionArray, setSelectionArray] = useState<SelectionArray[]>([])
     const [matchTiles, setMatchTiles] = useRecoilState<InitialTiles>(MatchTile)
     const [showTiles, setShowTiles] = useRecoilState<InitialTiles>(ShowTile)
@@ -50,26 +51,26 @@ const Index = () => {
     },[matchTiles, difficulty])
 
     const handleShow = (event: MouseEvent) => {
-        const ID: string = event.currentTarget!.getAttribute('id') ?? ''
-        const NAME: string = event.currentTarget!.getAttribute('name') ?? ''
+        const ID: string = event.currentTarget!.getAttribute('id') ?? '',
+        NAME: string = event.currentTarget!.getAttribute('name') ?? ''
 
         if(!gameActive) {
-            let startTime = +new Date()
+            const startTime = +new Date()
             setGameActive(true)
             setTime({...time, start: startTime})
         }
 
         if (selectionArray.length < 1) {
-            let arr: SelectionArray[] = [...selectionArray, { name: NAME, id: ID }]
+            const arr: SelectionArray[] = [...selectionArray, { name: NAME, id: ID }]
             setSelectionArray(arr)
-            let obj = { ...showTiles, [NAME]: true }
+            const obj = { ...showTiles, [NAME]: true }
             setShowTiles(obj)
         }
         if (selectionArray.length === 1) {
-            let arr: SelectionArray[] = [...selectionArray, { name: NAME, id: ID }]
+            const arr: SelectionArray[] = [...selectionArray, { name: NAME, id: ID }]
             setSelectionArray(arr)
 
-            let obj = { ...showTiles, [NAME]: true }
+            const obj = { ...showTiles, [NAME]: true }
             setShowTiles(obj)
 
             if (arr[0].id === arr[1].id && arr[0].name !== arr[1].name) {
