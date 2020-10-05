@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridBoxImage Tests Snapshot Test 1`] = `
+<div
+  className="sc-AxjAm fDtckw"
+  id="1"
+  name="test"
+  onClick={[Function]}
+>
+  <div
+    className="sc-AxirZ hpqAHB"
+  >
+    <img
+      alt="test"
+      src="#"
+    />
+  </div>
+</div>
+`;

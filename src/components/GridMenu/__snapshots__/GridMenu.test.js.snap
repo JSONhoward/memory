@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridMenu Tests Snapshot Test 1`] = `
+<div
+  className="sc-AxjAm izngQd"
+>
+  <div
+    className="sc-AxirZ kJELKF"
+  >
+    <button
+      className="sc-AxiKw eFtGgs"
+      onClick={[Function]}
+    >
+      easy
+    </button>
+    <button
+      className="sc-AxiKw eFtGgs"
+      onClick={[Function]}
+    >
+      normal
+    </button>
+    <button
+      className="sc-AxiKw eFtGgs"
+      onClick={[Function]}
+    >
+      hard
+    </button>
+  </div>
+  <button
+    className="sc-AxhCb gyFxJi"
+  >
+    <p>
+      New Game
+    </p>
+  </button>
+</div>
+`;
